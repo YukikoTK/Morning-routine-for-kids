@@ -1,0 +1,32 @@
+* {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+body {
+    font-size: 32px;
+}
+
+.mb-30 {
+    margin-bottom: 30px;
+}
+
+.ms-50 {
+    margin-left: 50px;
+}
+
+.container {
+    width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.list__items {
+    display: flex;
+    align-items: center;
+}
+
+.list__items .button {
+    margin-left: auto;
+}
