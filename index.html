@@ -18,7 +18,7 @@
                 </li>
             </ul>
         </div>
-        <div class="all__done">
+        <div class="all__done" v-if="allStatusTrue">
             Good job!
         </div>
 
@@ -36,22 +36,17 @@
                     { task: 'Get dressed', status: false },
                     { task: 'Do workbooks', status: false },
                 ]
-                
             },
             computed: {
+                allStatusTrue() {
+                    return this.items.every(item => item.status === true);
+                }
             },
             methods: {
                 clickedButton: function(index) {
                     this.items[index].status = !this.items[index].status;
                 }
             },
-            mounted: function() {
-                
-
-            },
-            watch: {
-                
-            }
         })
     </script>
 </body>
