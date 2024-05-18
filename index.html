@@ -12,25 +12,9 @@
         <div class="title">Morning Routine</div>
         <div class="items">
             <ul class="list__number">
-                <li class="list__items mb-30">
-                    Eat breakfast
-                    <button class="button ms-50" type="button">Not yet</button>
-                </li>
-                <li class="list__items mb-30">
-                    Brush teeth
-                    <button class="button ms-50" type="button">Not yet</button>
-                </li>
-                <li class="list__items mb-30">
-                    Wash face
-                    <button class="button ms-50" type="button">Not yet</button>
-                </li>
-                <li class="list__items mb-30">
-                    Get dressed
-                    <button class="button ms-50" type="button">Not yet</button>
-                </li>
-                <li class="list__items mb-30">
-                    Do workbooks
-                    <button class="button ms-50" type="button">Not yet</button>
+                <li class="list__items mb-30" v-for="(item, index) in items" :key="index">
+                    {{ item.task }}
+                    <button class="button ms-50" type="button" v-on:click="clickedButton(index)">{{ item.status ? 'Done!' : 'Not yet' }}</button>
                 </li>
             </ul>
         </div>
@@ -44,13 +28,22 @@
         new Vue({
             el:"#app",
             data: {
+                status: false,
+                items: [
+                    { task: 'Eat breakfast', status: false },
+                    { task: 'Brush teeth', status: false },
+                    { task: 'Wash face', status: false },
+                    { task: 'Get dressed', status: false },
+                    { task: 'Do workbooks', status: false },
+                ]
                 
             },
             computed: {
-                
             },
             methods: {
-                
+                clickedButton: function(index) {
+                    this.items[index].status = !this.items[index].status;
+                }
             },
             mounted: function() {
                 
