@@ -22,11 +22,44 @@ body {
     text-align: center;
 }
 
+.title {
+    font-size: 50px;
+}
+
 .list__items {
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .list__items .button {
     margin-left: auto;
+}
+
+.all__done {
+    color: #EE82EE;
+    font-size: 50px;
+}
+
+.button {
+    border: 1px solid gray;
+    border-radius: 10px;
+    width: 25%;
+}
+
+.clicked {
+    background-color: #EE82EE;
+    color: #ffff;
+    border: 1px solid gray;
+    border-radius: 10px;
+    width: 25%;
+}
+
+.underline {
+    position: absolute;
+    width: 70%;
+    height: 20%;
+    background-color: lightgreen;
+    bottom: 10%;
+    z-index: -1;
 }
