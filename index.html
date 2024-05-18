@@ -14,7 +14,8 @@
             <ul class="list__number">
                 <li class="list__items mb-30" v-for="(item, index) in items" :key="index">
                     {{ item.task }}
-                    <button class="button ms-50" type="button" v-on:click="clickedButton(index)">{{ item.status ? 'Done!' : 'Not yet' }}</button>
+                    <div class="underline"></div>
+                    <button class="button ms-50" type="button" v-on:click="clickedButton(index)" v-bind:class="{ clicked : item.status }">{{ item.status ? 'Done!' : 'Not yet' }}</button>
                 </li>
             </ul>
         </div>
@@ -35,7 +36,7 @@
                     { task: 'Wash face', status: false },
                     { task: 'Get dressed', status: false },
                     { task: 'Do workbooks', status: false },
-                ]
+                ],
             },
             computed: {
                 allStatusTrue() {
