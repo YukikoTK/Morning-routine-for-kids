@@ -10,6 +10,7 @@
 <body>
     <div id="app" class="container">
         <div class="title">Morning Routine</div>
+        <div class="date mb-30">{{ dateNow }}</div>
         <div class="items">
             <ul class="list__number">
                 <li class="list__items mb-30" v-for="(item, index) in items" :key="index">
@@ -22,13 +23,14 @@
         <div class="all__done fade" v-if="allStatusTrue">
             Good job!
         </div>
-
     </div>
 
     <script>
         new Vue({
             el:"#app",
             data: {
+                today: new Date(),
+                dateNow: '',
                 status: false,
                 items: [
                     { task: 'Eat breakfast', status: false },
@@ -41,13 +43,25 @@
             computed: {
                 allStatusTrue() {
                     return this.items.every(item => item.status === true);
-                }
+                },
             },
             methods: {
                 clickedButton: function(index) {
                     this.items[index].status = !this.items[index].status;
+                },
+                formatDate: function(date) {
+                    const year = date.getFullYear();
+                    const month = date.getMonth() + 1;
+                    const day = date.getDate();
+                    const dayOfTheWeek = date.getDay();
+                    const dayOfTheWeekEng = ["Sun", "Mon", "Tus", "Wed", "Thr", "Fri", "Sat"][dayOfTheWeek];
+                    return `${dayOfTheWeekEng}, ${day}/${month}/${year}`;
                 }
             },
+            mounted() {
+                this.dateNow = this.formatDate(this.today);
+
+            }
         })
     </script>
 </body>
