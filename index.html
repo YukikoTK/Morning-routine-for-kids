@@ -20,7 +20,8 @@
                 </li>
             </ul>
         </div>
-        <div class="all__done fade" v-if="allStatusTrue">Good job!!!</div>
+        <div class="all__done fade" v-if="allStatusTrue">Good job!</div>
+        <div class="all__done fade" v-if="almostStatusTrue">Almost!</div>
     </div>
 
     <script>
@@ -42,6 +43,10 @@
                 allStatusTrue() {
                     return this.items.every(item => item.status === true);
                 },
+                almostStatusTrue() {
+                    const falseCount = this.items.filter(item => item.status === false).length;
+                    return falseCount <= 2 && !this.allStatusTrue;
+                }
             },
             methods: {
                 clickedButton: function(index) {
